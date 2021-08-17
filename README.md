@@ -10,7 +10,7 @@ English | [简体中文](./README.zh-CN.md)
 
 ## ✨ Online preview
 
-https://umijs.github.io/dumi-template/
+https://umijs.github.io/react-auto-sizer/
 
 ## 📒 Catalog Introduction
 

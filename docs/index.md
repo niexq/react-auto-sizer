@@ -1,57 +1,57 @@
 ---
-title: dumi - A doc tool can assist you to develop libraries & write docs.
+title: react-auto-sizer - React components that automatically calculate width and height
 order: 10
 hero:
-  title: dumi
-  desc: 📖 A doc tool can assist you to develop libraries & write docs.
+  title: react-auto-sizer
+  desc: 📖 React components that automatically calculate width and height
   actions:
     - text: Getting Started
       link: /components/foo
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
-    title: Out of the box
-    desc: Elegant default configrations and convention routing assist developers to get started as simple as possible, that focus all attentions on developing libraries & writting docs
+    title: Simple
+    desc: Developers get started at zero cost
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
-    title: For developing libraries
-    desc: Rich Markdown extensions are not limited to rendering component demos, making component documents not only easy to write and manage, but also beautiful and easy to use
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/b8570f4d-c1b1-45eb-a1da-abff53159967/kj9t990h_w144_h144.png
-    title: Theme system
-    desc: Progressive custom theme capabilities, ranging from expanding your own Markdown tags to customizing complete theme packages, are up to you
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/b3e102cd-5dad-4046-a02a-be33241d1cc7/kj9t8oji_w144_h144.png
-    title: API automatically generated
-    desc: Component API can be automatically generated based on TypeScript type definitions, and components will always be『the same in appearance』
-  - icon: https://gw.alipayobjects.com/zos/bmw-prod/3863e74a-7870-4874-b1e1-00a8cdf47684/kj9t7ww3_w144_h144.png
-    title: Mobile component library development
-    desc: Install the theme package to quickly enable mobile component R&D capabilities, built-in mobile HD rendering solution
+    title: small size
+    desc: Using render-props mode, using react-hook and the latest ResizeObserver implementation, the code is maximized and streamlined
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/f093e060-726e-471c-a53e-e988ed3f560c/kj9t9sk7_w144_h144.png
-    title: Asset dataization capabilities
-    desc: One-line command digitizes component assets, and standardized asset data can be connected with downstream productivity tools
-footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by self
+    title: Production available
+    desc: Has been tested and polished in enough business scenarios within the company
+footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by react-auto-sizer
 ---
 
-## Getting Started
-
-Create first doc in manual way
+## 📦 Install
 
 ```bash
-// Create dir for libraries
-$ mkdir library && cd library
-
-// Install dumi
-$ npm i dumi
-
-// Create docs
-$ mkdir docs && echo '# Hello dumi!' > docs/index.md
-
-// Preview docs
-$ npx dumi dev
+  yarn add react-auto-sizer  # or npm i react-auto-sizer -S
 ```
 
-## Feedback
 
-Please visit [GitHub](https://github.com/umijs/dumi) or join the discuss group
+## 🔨 Use
 
-<div>
-  <img data-type="dingtalk" src="https://gw.alipayobjects.com/zos/bmw-prod/ec249703-be12-416c-8f33-297e47d9439c/kjy5ls84_w1004_h1346.png" width="300" />
-  <img data-type="wechat" src="https://gw.alipayobjects.com/zos/bmw-prod/c18bc2a5-719a-48ca-b225-c79ef88bfb43/k7m10ymd_w1004_h1346.jpeg" width="300" />
-</div>
+```tsx | pure
+import AutoSizer from 'react-auto-sizer';
+
+const AutoSizeComponent = () => {
+  return (
+    <div>
+      <AutoSizer>
+        {({ width, height }) => (
+          <div
+            style={{
+              width,
+              height
+            }}
+          >Content area</div>
+        )}
+      </AutoSizer>
+    </div>
+  )
+}
+```
+
+## 🔑 Feedback and co-construction
+
+| Github Issue | Dingding group |
+| --- | --- |
+| [react-auto-sizer/issues](https://github.com/niexq/react-auto-sizer/issues) | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/autosizerdingding.jpeg" width="150" /> |
