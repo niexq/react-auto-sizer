@@ -1,4 +1,4 @@
-<h1 align="center">欢迎来到 react-auto-sizer 👋</h1>
+<h1 align="center">Welcome to react-auto-sizer 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/niexq/react-auto-sizer#readme" target="_blank">
@@ -12,19 +12,20 @@
   </a>
 </p>
 
-> 自动计算宽高的react组件
+> React components that automatically calculate width and height
 
-简体中文 | [English](./README.en-US.md)
+[ 简体中文 ](./README.md) | English
 
-### 🏠 [预览](https://niexq.github.io/react-auto-sizer)
+### 🏠 [Homepage](https://niexq.github.io/react-auto-sizer)
 
-### 📦 安装
+### 📦 Install
 
 ```bash
   yarn add react-auto-sizer  # or npm i react-auto-sizer -S
 ```
 
-### 🔨 使用
+
+### 🔨 Use
 
 ```tsx | pure
 import AutoSizer from 'react-auto-sizer';
@@ -39,7 +40,7 @@ const AutoSizeComponent = () => {
               width,
               height
             }}
-          >内容区</div>
+          >Content area</div>
         )}
       </AutoSizer>
     </div>
@@ -47,22 +48,23 @@ const AutoSizeComponent = () => {
 }
 ```
 
-## 作者
+## Author
 
+* Website: https://juejin.cn/user/4318537404123688/posts
 * Github: [@niexq](https://github.com/niexq)
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎投稿、问题和功能请求！<br />随意检查 [issues](https://github.com/niexq/react-auto-sizer/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/niexq/react-auto-sizer/issues). 
 <a href="https://opencollective.com/react-auto-sizer/organization/0/website"><img src="https://opencollective.com/react-auto-sizer/organization/0/avatar.svg"></a>
 
-## 表达您的支持
+## Show your support
 
-如果这个项目对你有帮助，请给一个⭐️！
+Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-这个项目是 [MIT](https://github.com/niexq/react-auto-sizer/blob/main/LICENSE) licensed.
+This project is [MIT](https://github.com/niexq/react-auto-sizer/blob/main/LICENSE) licensed.
 
 ***
-_这个 README 是由 ❤️ [readme-md-generator](https://github.com/kefranabg/readme-md-generator)生成的_
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

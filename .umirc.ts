@@ -5,9 +5,9 @@ const repo = 'react-auto-sizer';
 export default defineConfig({
   title: repo,
   favicon:
-    'https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-size-logo.png',
+    'https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-size-logo-new.png',
   logo:
-    'https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-size-logo.png',
+    'https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-size-logo-new.png',
   outputPath: 'docs-dist',
   mode: 'site',
   hash: true,

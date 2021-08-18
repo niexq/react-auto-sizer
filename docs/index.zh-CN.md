@@ -6,14 +6,14 @@ hero:
   desc: 📖 自动计算宽高的react组件
   actions:
     - text: 快速上手
-      link: /zh-CN/components/foo
+      link: /zh-CN/components/auto-sizer
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: 简单
     desc: 开发者零成本上手使用
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
     title: 体积小
-    desc: 采用render-props模式，使用react-hook及最新ResizeObserver实现，代码最大化精简
+    desc: 采用`render-props`模式，使用`react-hook`及`ResizeObserver`实现，代码最大化精简
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/f093e060-726e-471c-a53e-e988ed3f560c/kj9t9sk7_w144_h144.png
     title: 生产可用
     desc: 已在公司内部经受过足够多的业务场景考验及打磨
