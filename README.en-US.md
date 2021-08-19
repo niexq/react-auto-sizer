@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://niexq.github.io/react-auto-sizer">
+    <img width="100" src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-size-logo-new.png">
+  </a>
+</p>
+
 <h1 align="center">Welcome to react-auto-sizer 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/npm/v/@oyyds/react-auto-sizer.svg" />
@@ -74,5 +80,8 @@ This project is [MIT](https://github.com/niexq/react-auto-sizer/blob/main/LICENS
 [react-virtualized-auto-sizer](https://github.com/bvaughn/react-virtualized-auto-sizer)<br />
 [ResizeObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver)
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+## 🌐 Browsers support
+
+| <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/chrome-logo.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/edge-logo.png" alt="IE / Edge" width="24px" height="24px" /><br/> Edge | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/firefox-logo.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/ie-logo.png" alt="Safari" width="24px" height="24px" /><br/>Internet Explorer | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/opera-logo.png" alt="Opera" width="24px" height="24px" /><br/>Opera | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/safari-logo.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/android-logo.png" alt="Safari" width="24px" height="24px" /><br/>WebView Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/chrome-logo.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/firefox-logo.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/opera-logo.png" alt="Opera" width="24px" height="24px" /><br/>Opera Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/safari-logo.png" alt="Safari" width="24px" height="24px" /><br/>Safari iOS | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/samsung-logo.png" alt="Samsung" width="24px" height="24px" /><br/>Samsung Internet |
+| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
+|    64     |    79     |    69     |    ❌     |    51     |   13.1    |    64     |    64     |    79     |    47     |   13.4    |    9.0    |
