@@ -69,7 +69,7 @@ const AutoSizeComponent = () => {
 
 ## 🐳 灵感来源
 
-[react-virtualized-auto-sizer](https://github.com/bvaughn/react-virtualized-auto-sizer)
+[react-virtualized-auto-sizer](https://github.com/bvaughn/react-virtualized-auto-sizer)<br />
 [ResizeObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver)
 
 ***

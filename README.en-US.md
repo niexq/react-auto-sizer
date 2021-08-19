@@ -71,7 +71,7 @@ This project is [MIT](https://github.com/niexq/react-auto-sizer/blob/main/LICENS
 
 ## 🐳 Link
 
-[react-virtualized-auto-sizer](https://github.com/bvaughn/react-virtualized-auto-sizer)
+[react-virtualized-auto-sizer](https://github.com/bvaughn/react-virtualized-auto-sizer)<br />
 [ResizeObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver)
 
 ***
