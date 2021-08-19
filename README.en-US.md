@@ -27,6 +27,8 @@
 
 ### 🏠 [Homepage](https://niexq.github.io/react-auto-sizer)
 
+![](https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-sizer-en-US.gif)
+
 ### 📦 Install
 
 ```bash
@@ -67,7 +69,7 @@ const AutoSizeComponent = () => {
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/niexq/react-auto-sizer/issues). 
 <!-- <a href="https://opencollective.com/react-auto-sizer/organization/0/website"><img src="https://avatars.githubusercontent.com/u/16329407?s=48&v=4"></a> -->
 
-## Show your support
+## ❤️ Show your support
 
 Give a ⭐️ if this project helped you!
 

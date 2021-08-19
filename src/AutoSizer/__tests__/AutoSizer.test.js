@@ -1,18 +1,18 @@
 /* global Element, Event */
 
 import * as React from 'react';
-import ReactDOM, {findDOMNode} from 'react-dom';
+import ReactDOM, { findDOMNode } from 'react-dom';
 import { renderHook, act } from '@testing-library/react-hooks';
 import AutoSizer from '../index';
 // import ResizeObserver from 'resize-observer-polyfill';
 // window.ResizeObserver = ResizeObserver;
 window.ResizeObserver =
-    window.ResizeObserver ||
-    jest.fn().mockImplementation(() => ({
-        disconnect: jest.fn(),
-        observe: jest.fn(),
-        unobserve: jest.fn(),
-    }));
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }));
 
 function render(markup) {
   if (!render._mountNode) {
@@ -37,7 +37,7 @@ render.unmount = function() {
   }
 };
 
-function DefaultChildComponent({height, width, foo, bar, nnn}) {
+function DefaultChildComponent({ height, width, foo, bar, nnn }) {
   return (
     <div>{`width:${width}, height:${height}, foo:${foo}, bar:${bar}, nnn: ${nnn}`}</div>
   );
@@ -83,18 +83,19 @@ describe('AutoSizer', () => {
           disableHeight={disableHeight}
           disableWidth={disableWidth}
           onResize={onResize}
-          style={style}>
-          {(ddddddddd) => {
-            const {height, width} = ddddddddd;
+          style={style}
+        >
+          {ddddddddd => {
+            const { height, width } = ddddddddd;
             return (
-            <ChildComponent
-              width={disableWidth ? undefined : width}
-              height={disableHeight ? undefined : height}
-              bar={bar}
-              foo={foo}
-              nnn={JSON.stringify(ddddddddd)}
-            />
-          )
+              <ChildComponent
+                width={disableWidth ? undefined : width}
+                height={disableHeight ? undefined : height}
+                bar={bar}
+                foo={foo}
+                nnn={JSON.stringify(ddddddddd)}
+              />
+            );
           }}
         </AutoSizer>
       </div>
@@ -150,18 +151,18 @@ describe('AutoSizer', () => {
   });
 
   it('should not update :width if :disableWidth is true', () => {
-    const rendered = findDOMNode(render(getMarkup({disableWidth: true})));
+    const rendered = findDOMNode(render(getMarkup({ disableWidth: true })));
     expect(rendered.textContent).toContain('height:100');
     expect(rendered.textContent).toContain('width:undefined');
   });
 
   it('should not update :height if :disableHeight is true', () => {
-    const rendered = findDOMNode(render(getMarkup({disableHeight: true})));
+    const rendered = findDOMNode(render(getMarkup({ disableHeight: true })));
     expect(rendered.textContent).toContain('height:undefined');
     expect(rendered.textContent).toContain('width:200');
   });
 
-  async function simulateResize({element, height, width}) {
+  async function simulateResize({ element, height, width }) {
     mockOffsetSize(width, height);
 
     // Trigger detectElementResize library by faking a scroll event
@@ -184,7 +185,7 @@ describe('AutoSizer', () => {
     );
     expect(rendered.textContent).toContain('height:100');
     expect(rendered.textContent).toContain('width:200');
-    await simulateResize({element: rendered, height: 400, width: 300});
+    await simulateResize({ element: rendered, height: 400, width: 300 });
     expect(rendered.textContent).toContain('height:400');
     expect(rendered.textContent).toContain('width:300');
     done();
@@ -208,7 +209,7 @@ describe('AutoSizer', () => {
       );
       ChildComponent.mockClear(); // TODO Improve initial check in version 10; see AutoSizer render()
       expect(onResize).toHaveBeenCalledTimes(1);
-      await simulateResize({element: rendered, height: 400, width: 300});
+      await simulateResize({ element: rendered, height: 400, width: 300 });
       expect(ChildComponent).toHaveBeenCalledTimes(1);
       expect(onResize).toHaveBeenCalledTimes(2);
       done();
@@ -232,10 +233,10 @@ describe('AutoSizer', () => {
       );
       ChildComponent.mockClear(); // TODO Improve initial check in version 10; see AutoSizer render()
       expect(onResize).toHaveBeenCalledTimes(1);
-      await simulateResize({element: rendered, height: 100, width: 300});
+      await simulateResize({ element: rendered, height: 100, width: 300 });
       expect(ChildComponent).toHaveBeenCalledTimes(0);
       expect(onResize).toHaveBeenCalledTimes(1);
-      await simulateResize({element: rendered, height: 200, width: 300});
+      await simulateResize({ element: rendered, height: 200, width: 300 });
       expect(ChildComponent).toHaveBeenCalledTimes(1);
       expect(onResize).toHaveBeenCalledTimes(2);
       done();
@@ -259,10 +260,10 @@ describe('AutoSizer', () => {
       );
       ChildComponent.mockClear(); // TODO Improve initial check in version 10; see AutoSizer render()
       expect(onResize).toHaveBeenCalledTimes(1);
-      await simulateResize({element: rendered, height: 200, width: 200});
+      await simulateResize({ element: rendered, height: 200, width: 200 });
       expect(ChildComponent).toHaveBeenCalledTimes(0);
       expect(onResize).toHaveBeenCalledTimes(1);
-      await simulateResize({element: rendered, height: 200, width: 300});
+      await simulateResize({ element: rendered, height: 200, width: 300 });
       expect(ChildComponent).toHaveBeenCalledTimes(1);
       expect(onResize).toHaveBeenCalledTimes(2);
       done();
@@ -271,13 +272,13 @@ describe('AutoSizer', () => {
 
   describe('className and style', () => {
     it('should use a custom :className if specified', () => {
-      const rendered = findDOMNode(render(getMarkup({className: 'foo'})));
+      const rendered = findDOMNode(render(getMarkup({ className: 'foo' })));
       expect(rendered.firstChild.className).toContain('foo');
     });
 
     it('should use a custom :style if specified', () => {
-      const style = {backgroundColor: 'red'};
-      const rendered = findDOMNode(render(getMarkup({style})));
+      const style = { backgroundColor: 'red' };
+      const rendered = findDOMNode(render(getMarkup({ style })));
       expect(rendered.firstChild.style.backgroundColor).toEqual('red');
     });
   });

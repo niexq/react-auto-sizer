@@ -5,7 +5,7 @@
   </a>
 </p>
 
-<h1 align="center">欢迎来到 react-auto-sizer 👋</h1>
+<h1 align="center">react-auto-sizer 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/npm/v/@oyyds/react-auto-sizer.svg" />
   <a href="https://github.com/niexq/react-auto-sizer#readme" target="_blank">
@@ -22,11 +22,13 @@
   </a>
 </p>
 
-> 自动计算宽高的react组件
+> 自动计算宽高的 react 组件
 
 简体中文 | [English](./README.en-US.md)
 
 ### 🏠 [主页预览](https://niexq.github.io/react-auto-sizer)
+
+![](https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-sizer-zh-CN.gif)
 
 ### 📦 安装
 
@@ -66,7 +68,7 @@ const AutoSizeComponent = () => {
 欢迎投稿、问题和功能请求！<br />随时检查 [issues](https://github.com/niexq/react-auto-sizer/issues).
 <!-- <a href="https://opencollective.com/react-auto-sizer/organization/0/website"><img src="https://avatars.githubusercontent.com/u/16329407?s=48&v=4"></a> -->
 
-## 表达您的支持
+## ❤️ 表达您的支持
 
 如果这个项目对你有帮助，请给一个⭐️！
 
