@@ -21,8 +21,8 @@ When the content area needs to display big data tables or big data lists, many b
  */
 
 import React from 'react';
-import AutoSizer from 'react-auto-sizer';
-import type { Size } from 'react-auto-sizer';
+import AutoSizer from '@oyyds/react-auto-sizer';
+import type { Size } from '@oyyds/react-auto-sizer';
 
 export default () => (
   <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
@@ -44,8 +44,8 @@ export default () => (
  */
 
 import React from 'react';
-import AutoSizer from 'react-auto-sizer';
-import type { Size } from 'react-auto-sizer';
+import AutoSizer from '@oyyds/react-auto-sizer';
+import type { Size } from '@oyyds/react-auto-sizer';
 
 export default () => {
   const onResize = (size: Size, entry?: ResizeObserverEntry) => {
@@ -73,8 +73,8 @@ export default () => {
  */
 
 import React from 'react';
-import AutoSizer from 'react-auto-sizer';
-import type { Size } from 'react-auto-sizer';
+import AutoSizer from '@oyyds/react-auto-sizer';
+import type { Size } from '@oyyds/react-auto-sizer';
 
 export default () => (
   <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
@@ -96,8 +96,8 @@ export default () => (
  */
 
 import React from 'react';
-import AutoSizer from 'react-auto-sizer';
-import type { Size } from 'react-auto-sizer';
+import AutoSizer from '@oyyds/react-auto-sizer';
+import type { Size } from '@oyyds/react-auto-sizer';
 
 export default () => (
   <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>

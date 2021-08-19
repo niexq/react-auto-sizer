@@ -23,14 +23,14 @@ footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by rea
 ## 📦 Install
 
 ```bash
-  yarn add react-auto-sizer  # or npm i react-auto-sizer -S
+  yarn add @oyyds/react-auto-sizer  # or npm i @oyyds/react-auto-sizer -S
 ```
 
 
 ## 🔨 Use
 
 ```tsx | pure
-import AutoSizer from 'react-auto-sizer';
+import AutoSizer from '@oyyds/react-auto-sizer';
 
 const AutoSizeComponent = () => {
   return (
