@@ -154,10 +154,10 @@ export default () => {
 
 The attributes are described as follows:
 
-| Attributes          | instruction                                            | Required | type                           | Defaults  | 版Version本 |
+| Attributes          | instruction                                            | Required | type                           | Defaults  | Version |
 |---------------------|--------------------------------------------------------|------|---------------------------------|--------|----|
 | children            | Function responsible for rendering children            | Y    | (size: SizeType) => React.ReactNode  |        |    |
-| className           | Optional custom CSS class name to attach to root AutoSizer element  | 否    | string                           |        |    |
+| className           | Optional custom CSS class name to attach to root AutoSizer element  | N    | string                           |        |    |
 | style               | Optional inline style                                  | N    | Object                           |   |    |
 | disableHeight       | Disable dynamic :height property                       | N    | boolean                           |   false  |    |
 | disableWidth        | Disable dynamic :width property                        | N    | boolean                           |   false   |    |
