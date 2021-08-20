@@ -22,12 +22,12 @@ nav:
 
 import React from 'react';
 import AutoSizer from '@oyyds/react-auto-sizer';
-import type { Size } from '@oyyds/react-auto-sizer';
+import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => (
   <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
     <AutoSizer>
-      {({ width, height }: Size) => (
+      {({ width, height }: SizeType) => (
         <div
           style={{ width, height }}
         >{`内容区域（宽：${width}，高：${height}）`}</div>
@@ -45,17 +45,17 @@ export default () => (
 
 import React from 'react';
 import AutoSizer from '@oyyds/react-auto-sizer';
-import type { Size } from '@oyyds/react-auto-sizer';
+import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => {
-  const onResize = (size: Size, entry?: ResizeObserverEntry) => {
+  const onResize = (size: SizeType, entry?: ResizeObserverEntry) => {
     console.log('onResize-size: ', size);
     console.log('onResize-entry: ', entry);
   }
   return (
     <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
       <AutoSizer onResize={onResize}>
-        {({ width, height }: Size) => (
+        {({ width, height }: SizeType) => (
           <div
             style={{ width, height }}
           >{`内容区域（宽：${width}，高：${height}）`}</div>
@@ -74,12 +74,12 @@ export default () => {
 
 import React from 'react';
 import AutoSizer from '@oyyds/react-auto-sizer';
-import type { Size } from '@oyyds/react-auto-sizer';
+import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => (
   <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
     <AutoSizer disableHeight>
-      {({ width, height }: Size) => (
+      {({ width, height }: SizeType) => (
         <div
           style={{ width, height }}
         >{`内容区域（宽：${width}，高：${height}）`}</div>
@@ -97,12 +97,12 @@ export default () => (
 
 import React from 'react';
 import AutoSizer from '@oyyds/react-auto-sizer';
-import type { Size } from '@oyyds/react-auto-sizer';
+import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => (
   <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
     <AutoSizer disableWidth>
-      {({ width, height }: Size) => (
+      {({ width, height }: SizeType) => (
         <div
           style={{ width, height }}
         >{`内容区域（宽：${width}，高：${height}）`}</div>
@@ -112,18 +112,56 @@ export default () => (
 );
 ```
 
+```tsx
+/**
+ * title: onResize 回调限制
+ * desc: 当 `disableHeight` = true 时，父组件仅改变 `高度`，onResize不回调（`disableWidth` 同理）
+ */
+
+import React, { useState } from 'react';
+import AutoSizer from '@oyyds/react-auto-sizer';
+import type { SizeType } from '@oyyds/react-auto-sizer';
+
+export default () => {
+  const [height, setHeight] = useState<number>(200);
+  const [width, setWidth] = useState<number>(300);
+  const [onResizeCalledTimes, setOnResizeCalledTimes] = useState<number>(0);
+  const onResize = (size: SizeType, entry?: ResizeObserverEntry) => {
+    console.log('onResize-size: ', size);
+    console.log('onResize-entry: ', entry);
+    setOnResizeCalledTimes(prevTimes => ++prevTimes);
+  }
+  return (
+    <div style={{ width, height, resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
+      <AutoSizer onResize={onResize} disableHeight>
+        {({ width, height }: SizeType) => (
+            <div
+              style={{ width, height }}
+            >
+              <div style={{ marginBottom: 20 }}>{`内容区域（宽：${width}，高：${height}）`}</div>
+              <button onClick={() => setHeight(prevHeight => prevHeight + 10)}>点击（高加10）</button>
+              <button onClick={() => setWidth(prevWidth => prevWidth + 10)}>点击（宽加10）</button>
+              <div>{`onResize 被回调次数：${onResizeCalledTimes}`}</div>
+            </div>
+          )}
+      </AutoSizer>
+    </div>
+  );
+}
+```
+
 ## API
 
 详细属性说明如下：
 
 | 属性                 | 说明                                                   | 是否必传 | 类型                           | 默认值  | 版本 |
 |---------------------|--------------------------------------------------------|------|---------------------------------|--------|----|
-| children            | 负责渲染子级的函数                                        | 是    | (size: Size) => React.ReactNode  |        |    |
+| children            | 负责渲染子级的函数                                        | 是    | (size: SizeType) => React.ReactNode  |        |    |
 | className           | 附加到 AutoSizer 根元素的可选自定义 CSS 类名称              | 否    | string                           |        |    |
 | style               | 附加到 AutoSizer 根元素的可选内联样式                      | 否    | Object                           |   |    |
 | disableHeight       | 禁用动态: height 属性                                    | 否    | boolean                           |   false  |    |
 | disableWidth        | 禁用动态: width 属性                                     | 否    | boolean                           |   false   |    |
-| onResize            | 在调整大小时调用的回调                                     | 否    | (size: Size, entry?: ResizeObserverEntry) => void |   |    |
+| onResize            | 在调整大小时调用的回调                                     | 否    | (size: SizeType, entry?: ResizeObserverEntry) => void |   |    |
 
 ## 浏览器兼容性
 

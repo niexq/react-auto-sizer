@@ -20,3 +20,6 @@
 .umi-production
 .umi-test
 .env.local
+
+# coverage
+/coverage

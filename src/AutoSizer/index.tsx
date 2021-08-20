@@ -1,19 +1,23 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo, useCallback, RefObject } from 'react';
 
-interface Size {
+interface SizeType {
   height?: number;
   width?: number;
 }
 
-interface OuterStyle {
+interface OuterStyleType {
   overflow?: string;
   height?: number;
   width?: number;
 }
 
+interface ChildParamsRefType {
+  current: SizeType;
+}
+
 export interface AutoSizerProps {
   /** Function responsible for rendering children. */
-  children: (size: Size) => React.ReactNode;
+  children: (size: SizeType) => React.ReactNode;
 
   /** Optional custom CSS class name to attach to root AutoSizer element. */
   className?: string;
@@ -34,7 +38,7 @@ export interface AutoSizerProps {
   disableWidth?: boolean;
 
   /** Callback to be invoked on-resize */
-  onResize?: (size: Size, entry?: ResizeObserverEntry) => void;
+  onResize?: (size: SizeType, entry?: ResizeObserverEntry) => void;
 }
 
 const AutoSizer: React.FC<AutoSizerProps> = props => {
@@ -48,37 +52,45 @@ const AutoSizer: React.FC<AutoSizerProps> = props => {
     disableWidth,
     onResize,
   } = props;
-  let _autoSizer = useRef(null);
   const [bailoutOnChildren, setBailoutOnChildren] = useState<boolean>(false);
-  const [outerStyle, setOuterStyle] = useState<OuterStyle>({});
-  const [childParams, setChildParams] = useState<Size>({
+  const [outerStyle, setOuterStyle] = useState<OuterStyleType>({});
+  const [childParams, setChildParams] = useState<SizeType>({
     width: defaultWidth,
     height: defaultHeight,
   });
+  const _autoSizerRef = useRef<HTMLDivElement>(null);
+  const _childParamsRef = useRef<SizeType>(childParams);
+  
+  const observer = useMemo(
+    () =>
+      new ResizeObserver(
+        (entries: ResizeObserverEntry[]) => {
+          for (let entry of entries) {
+            const contentRect = entry.contentRect;
+            const width = Math.trunc(contentRect?.width || 0);
+            const height = Math.trunc(contentRect?.height || 0);
+            updateState(width, height, entry);
+          }
+        },
+      ),
+    []
+  )
 
   useEffect(() => {
-    const observer = new (window as any).ResizeObserver(
-      (entries: ResizeObserverEntry[]) => {
-        for (let entry of entries) {
-          const contentRect = entry.contentRect;
-          const width = Math.trunc(contentRect?.width || 0);
-          const height = Math.trunc(contentRect?.height || 0);
-          updateState(width, height);
-          if (typeof onResize === 'function') {
-            onResize({ width, height }, entry);
-          }
-        }
-      },
-    );
-    observer.observe(_autoSizer?.current?.['parentNode']);
+    _childParamsRef.current = childParams;
+  }, [ childParams ]);
+
+  useEffect(() => {
+    if (!_autoSizerRef?.current?.parentNode) throw new Error('Not Found AutoSizer parentNode');
+    observer.observe((_autoSizerRef?.current?.parentNode as Element));
     return () => {
       observer.disconnect();
     };
   }, []);
 
-  const updateState = (newWidth: number, newHeight: number) => {
-    const newOuterStyle: OuterStyle = { overflow: 'visible' };
-    const newChildParams: Size = { ...childParams };
+  const updateState = (newWidth: number, newHeight: number, entry: ResizeObserverEntry) => {
+    const newOuterStyle: OuterStyleType = { overflow: 'visible' };
+    const newChildParams: SizeType = { ...childParams };
 
     let newBailoutOnChildren = false;
 
@@ -93,14 +105,22 @@ const AutoSizer: React.FC<AutoSizerProps> = props => {
       // newOuterStyle.width = 0;
       newChildParams.width = newWidth;
     }
-    setBailoutOnChildren(newBailoutOnChildren);
-    setOuterStyle(newOuterStyle);
-    setChildParams(newChildParams);
+    if (
+      (!disableHeight && _childParamsRef.current?.height !== newHeight) ||
+      (!disableWidth && _childParamsRef.current?.width !== newWidth)
+    ) {
+      setBailoutOnChildren(newBailoutOnChildren);
+      setOuterStyle(newOuterStyle);
+      setChildParams({ ...newChildParams });
+      if (typeof onResize === 'function') {
+        onResize({ ...newChildParams }, entry);
+      }
+    }
   };
   return (
     <div
       className={className}
-      ref={_autoSizer}
+      ref={_autoSizerRef}
       style={{
         ...outerStyle,
         ...style,
