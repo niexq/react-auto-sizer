@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState, useMemo, useCallback, RefObject } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 
-interface SizeType {
+export interface SizeType {
   height?: number;
   width?: number;
 }
@@ -9,10 +9,6 @@ interface OuterStyleType {
   overflow?: string;
   height?: number;
   width?: number;
-}
-
-interface ChildParamsRefType {
-  current: SizeType;
 }
 
 export interface AutoSizerProps {
@@ -60,35 +56,39 @@ const AutoSizer: React.FC<AutoSizerProps> = props => {
   });
   const _autoSizerRef = useRef<HTMLDivElement>(null);
   const _childParamsRef = useRef<SizeType>(childParams);
-  
+
   const observer = useMemo(
     () =>
-      new ResizeObserver(
-        (entries: ResizeObserverEntry[]) => {
-          for (let entry of entries) {
-            const contentRect = entry.contentRect;
-            const width = Math.trunc(contentRect?.width || 0);
-            const height = Math.trunc(contentRect?.height || 0);
-            updateState(width, height, entry);
-          }
-        },
-      ),
-    []
-  )
+      new ResizeObserver((entries: ResizeObserverEntry[]) => {
+        for (let entry of entries) {
+          const contentRect = entry.contentRect;
+          const width = Math.trunc(contentRect?.width || 0);
+          const height = Math.trunc(contentRect?.height || 0);
+          updateState(width, height, entry);
+        }
+      }),
+    [],
+  );
 
   useEffect(() => {
     _childParamsRef.current = childParams;
-  }, [ childParams ]);
+  }, [childParams]);
 
   useEffect(() => {
-    if (!_autoSizerRef?.current?.parentNode) throw new Error('Not Found AutoSizer parentNode');
-    observer.observe((_autoSizerRef?.current?.parentNode as Element));
+    if (!_autoSizerRef?.current?.parentNode) {
+      throw new Error('Not Found AutoSizer parentNode');
+    }
+    observer.observe(_autoSizerRef?.current?.parentNode as Element);
     return () => {
       observer.disconnect();
     };
   }, []);
 
-  const updateState = (newWidth: number, newHeight: number, entry: ResizeObserverEntry) => {
+  const updateState = (
+    newWidth: number,
+    newHeight: number,
+    entry: ResizeObserverEntry,
+  ) => {
     const newOuterStyle: OuterStyleType = { overflow: 'visible' };
     const newChildParams: SizeType = { ...childParams };
 

@@ -1,6 +1,6 @@
 {
   "name": "@oyyds/react-auto-sizer",
-  "version": "1.2.1",
+  "version": "1.2.6",
   "description": "自动计算宽高的react组件 React components that automatically calculate width and height",
   "keywords": [
     "react-auto-sizer",

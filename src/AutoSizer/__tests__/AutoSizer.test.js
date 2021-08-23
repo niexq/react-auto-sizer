@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from "react-dom/test-utils";
+import { act } from 'react-dom/test-utils';
 // import { renderHook, act } from '@testing-library/react-hooks';
 import AutoSizer from '../index';
 import ResizeObserver from 'resize-observer-polyfill';
@@ -13,7 +13,7 @@ window.ResizeObserver = class NewResizeObserver extends ResizeObserver {
     super(ls);
     listener = ls;
   }
-}
+};
 // window.ResizeObserver =
 //   window.ResizeObserver ||
 //   jest.fn().mockImplementation(() => ({
@@ -25,7 +25,7 @@ window.ResizeObserver = class NewResizeObserver extends ResizeObserver {
 let container = null;
 beforeEach(() => {
   // 创建一个 DOM 元素作为渲染目标
-  container = document.createElement("div");
+  container = document.createElement('div');
   document.body.appendChild(container);
 });
 
@@ -36,14 +36,11 @@ afterEach(() => {
   container = null;
 });
 
-
 describe('Jest -> AutoSizer', () => {
   const DefaultChildComponent = ({ height, width, foo }) => {
-    const otherLabel = (foo || foo === 0) ? `, foo: ${foo}` : '';
-    return (
-      <div>{`width: ${width}, height: ${height}${otherLabel}`}</div>
-    );
-  }
+    const otherLabel = foo || foo === 0 ? `, foo: ${foo}` : '';
+    return <div>{`width: ${width}, height: ${height}${otherLabel}`}</div>;
+  };
   const AutoSizerComponent = ({
     ChildComponent = DefaultChildComponent,
     foo = undefined,
@@ -76,7 +73,7 @@ describe('Jest -> AutoSizer', () => {
         </AutoSizer>
       </div>
     );
-  }
+  };
 
   async function simulateResize({ width, height }) {
     act(() => {
@@ -92,15 +89,10 @@ describe('Jest -> AutoSizer', () => {
     await new Promise(resolve => setTimeout(resolve, 100));
   }
 
-
   describe('render React child and get width/height and set disableWidth/disableHeight', () => {
-
     it('should relay properties to ChildComponent or React child', () => {
       act(() => {
-        render(
-          <AutoSizerComponent foo={456} />,
-          container
-        );
+        render(<AutoSizerComponent foo={456} />, container);
       });
 
       expect(container.textContent).toContain('foo: 456');
@@ -136,10 +128,7 @@ describe('Jest -> AutoSizer', () => {
 
     it('should not update :width if :disableWidth is true', () => {
       act(() => {
-        render(
-          <AutoSizerComponent disableWidth />,
-          container
-        );
+        render(<AutoSizerComponent disableWidth />, container);
       });
 
       act(() => {
@@ -158,10 +147,7 @@ describe('Jest -> AutoSizer', () => {
 
     it('should not update :height if :disableHeight is true', () => {
       act(() => {
-        render(
-          <AutoSizerComponent disableHeight />,
-          container
-        );
+        render(<AutoSizerComponent disableHeight />, container);
       });
 
       act(() => {
@@ -174,7 +160,7 @@ describe('Jest -> AutoSizer', () => {
           },
         ]);
       });
-      
+
       expect(container.textContent).toBe('width: 300, height: undefined');
     });
 
@@ -182,7 +168,7 @@ describe('Jest -> AutoSizer', () => {
       act(() => {
         render(<AutoSizerComponent />, container);
       });
-      
+
       act(() => {
         listener([
           {
@@ -199,7 +185,6 @@ describe('Jest -> AutoSizer', () => {
       expect(container.textContent).toBe('width: 500, height: 560');
       done();
     });
-
   });
 
   describe('onResize and (re)render', () => {
@@ -208,11 +193,14 @@ describe('Jest -> AutoSizer', () => {
       const ChildComponent = jest
         .fn()
         .mockImplementation(DefaultChildComponent);
-      
+
       act(() => {
         render(
-          <AutoSizerComponent ChildComponent={ChildComponent} onResize={onResize} />,
-          container
+          <AutoSizerComponent
+            ChildComponent={ChildComponent}
+            onResize={onResize}
+          />,
+          container,
         );
       });
 
@@ -243,8 +231,12 @@ describe('Jest -> AutoSizer', () => {
 
       act(() => {
         render(
-          <AutoSizerComponent ChildComponent={ChildComponent} onResize={onResize} disableWidth />,
-          container
+          <AutoSizerComponent
+            ChildComponent={ChildComponent}
+            onResize={onResize}
+            disableWidth
+          />,
+          container,
         );
       });
 
@@ -280,11 +272,15 @@ describe('Jest -> AutoSizer', () => {
 
       act(() => {
         render(
-          <AutoSizerComponent ChildComponent={ChildComponent} onResize={onResize} disableHeight />,
-          container
+          <AutoSizerComponent
+            ChildComponent={ChildComponent}
+            onResize={onResize}
+            disableHeight
+          />,
+          container,
         );
       });
-      
+
       ChildComponent.mockClear();
 
       act(() => {
@@ -313,21 +309,25 @@ describe('Jest -> AutoSizer', () => {
     it('should use a custom :className if specified', () => {
       act(() => {
         render(
-          <AutoSizerComponent className='autoSizerContainer' />,
-          container
+          <AutoSizerComponent className="autoSizerContainer" />,
+          container,
         );
       });
-      expect(container.firstChild.firstChild.className).toContain('autoSizerContainer');
+      expect(container.firstChild.firstChild.className).toContain(
+        'autoSizerContainer',
+      );
     });
 
     it('should use a custom :style if specified', () => {
       act(() => {
         render(
           <AutoSizerComponent style={{ backgroundColor: 'blue' }} />,
-          container
+          container,
         );
       });
-      expect(container.firstChild.firstChild.style.backgroundColor).toEqual('blue');
+      expect(container.firstChild.firstChild.style.backgroundColor).toEqual(
+        'blue',
+      );
     });
   });
 });
