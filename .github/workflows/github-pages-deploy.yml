@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy
+name: Build and Deploy
 on: 
   push:
     branches:
@@ -7,14 +7,18 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🧩
+      - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Install Build and Deploy 🚀
+      - name: Install and Build docs-dist 🔧 
+        run: |
+          npm install
+          npm run deploy
+
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
           folder: docs-dist
         env:
           ACCESS_TOKEN: ${{ secrets.ACTIONS_ACCESS_TOKEN }}
-          BUILD_SCRIPT: npm install && npm run deploy
