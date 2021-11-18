@@ -25,12 +25,18 @@ import AutoSizer from '@oyyds/react-auto-sizer';
 import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => (
-  <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      resize: 'both',
+      border: '2px solid #ddd',
+      overflow: 'auto',
+    }}
+  >
     <AutoSizer>
       {({ width, height }: SizeType) => (
-        <div
-          style={{ width, height }}
-        >{`Content area (width: ${width}, height: ${height})`}</div>
+        <div style={{ width, height }}>{`Content area (width: ${width}, height: ${height})`}</div>
       )}
     </AutoSizer>
   </div>
@@ -51,19 +57,25 @@ export default () => {
   const onResize = (size: SizeType, entry?: ResizeObserverEntry) => {
     console.log('onResize-size: ', size);
     console.log('onResize-entry: ', entry);
-  }
+  };
   return (
-    <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        resize: 'both',
+        border: '2px solid #ddd',
+        overflow: 'auto',
+      }}
+    >
       <AutoSizer onResize={onResize}>
         {({ width, height }: SizeType) => (
-          <div
-            style={{ width, height }}
-          >{`Content area (width: ${width}, height: ${height})`}</div>
+          <div style={{ width, height }}>{`Content area (width: ${width}, height: ${height})`}</div>
         )}
       </AutoSizer>
     </div>
   );
-}
+};
 ```
 
 ```tsx
@@ -77,12 +89,18 @@ import AutoSizer from '@oyyds/react-auto-sizer';
 import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => (
-  <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      resize: 'both',
+      border: '2px solid #ddd',
+      overflow: 'auto',
+    }}
+  >
     <AutoSizer disableHeight>
       {({ width, height }: SizeType) => (
-        <div
-          style={{ width, height }}
-        >{`Content area (width: ${width}, height: ${height})`}</div>
+        <div style={{ width, height }}>{`Content area (width: ${width}, height: ${height})`}</div>
       )}
     </AutoSizer>
   </div>
@@ -100,12 +118,18 @@ import AutoSizer from '@oyyds/react-auto-sizer';
 import type { SizeType } from '@oyyds/react-auto-sizer';
 
 export default () => (
-  <div style={{ width: '100%', height: '100%', resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      resize: 'both',
+      border: '2px solid #ddd',
+      overflow: 'auto',
+    }}
+  >
     <AutoSizer disableWidth>
       {({ width, height }: SizeType) => (
-        <div
-          style={{ width, height }}
-        >{`Content area (width: ${width}, height: ${height})`}</div>
+        <div style={{ width, height }}>{`Content area (width: ${width}, height: ${height})`}</div>
       )}
     </AutoSizer>
   </div>
@@ -129,25 +153,29 @@ export default () => {
   const onResize = (size: SizeType, entry?: ResizeObserverEntry) => {
     console.log('onResize-size: ', size);
     console.log('onResize-entry: ', entry);
-    setOnResizeCalledTimes(prevTimes => ++prevTimes);
-  }
+    setOnResizeCalledTimes((prevTimes) => ++prevTimes);
+  };
   return (
     <div style={{ width, height, resize: 'both', border: '2px solid #ddd', overflow: 'auto' }}>
       <AutoSizer onResize={onResize} disableHeight>
         {({ width, height }: SizeType) => (
+          <div style={{ width, height }}>
             <div
-              style={{ width, height }}
-            >
-              <div style={{ marginBottom: 20 }}>{`Content area (width: ${width}, height: ${height})`}</div>
-              <button onClick={() => setHeight(prevHeight => prevHeight + 10)}>click（height add 10）</button>
-              <button onClick={() => setWidth(prevWidth => prevWidth + 10)}>click（width add 10）</button>
-              <div>{`onResize Called Times：${onResizeCalledTimes}`}</div>
-            </div>
-          )}
+              style={{ marginBottom: 20 }}
+            >{`Content area (width: ${width}, height: ${height})`}</div>
+            <button onClick={() => setHeight((prevHeight) => prevHeight + 10)}>
+              click（height add 10）
+            </button>
+            <button onClick={() => setWidth((prevWidth) => prevWidth + 10)}>
+              click（width add 10）
+            </button>
+            <div>{`onResize Called Times：${onResizeCalledTimes}`}</div>
+          </div>
+        )}
       </AutoSizer>
     </div>
   );
-}
+};
 ```
 
 ## API

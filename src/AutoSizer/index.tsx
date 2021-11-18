@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react';
+import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 
 export interface SizeType {
   height?: number;
@@ -19,7 +19,7 @@ export interface AutoSizerProps {
   className?: string;
 
   /** Optional inline style */
-  style?: Object;
+  style?: React.CSSProperties;
 
   /** Default height to use for initial render; useful for SSR */
   defaultHeight?: number;
@@ -37,7 +37,7 @@ export interface AutoSizerProps {
   onResize?: (size: SizeType, entry?: ResizeObserverEntry) => void;
 }
 
-const AutoSizer: React.FC<AutoSizerProps> = props => {
+const AutoSizer: React.FC<AutoSizerProps> = (props) => {
   const {
     children,
     className,
@@ -57,17 +57,50 @@ const AutoSizer: React.FC<AutoSizerProps> = props => {
   const _autoSizerRef = useRef<HTMLDivElement>(null);
   const _childParamsRef = useRef<SizeType>(childParams);
 
+  const updateState = useCallback(
+    (newWidth: number, newHeight: number, entry: ResizeObserverEntry) => {
+      const newOuterStyle: OuterStyleType = { overflow: 'visible' };
+      const newChildParams: SizeType = { ...childParams };
+
+      let newBailoutOnChildren = false;
+
+      if (!disableHeight) {
+        newBailoutOnChildren = newHeight === 0;
+        // newOuterStyle.height = 0;
+        newChildParams.height = newHeight;
+      }
+
+      if (!disableWidth) {
+        newBailoutOnChildren = newWidth === 0;
+        // newOuterStyle.width = 0;
+        newChildParams.width = newWidth;
+      }
+      if (
+        (!disableHeight && _childParamsRef.current?.height !== newHeight) ||
+        (!disableWidth && _childParamsRef.current?.width !== newWidth)
+      ) {
+        setBailoutOnChildren(newBailoutOnChildren);
+        setOuterStyle(newOuterStyle);
+        setChildParams({ ...newChildParams });
+        if (typeof onResize === 'function') {
+          onResize({ ...newChildParams }, entry);
+        }
+      }
+    },
+    [childParams, disableHeight, disableWidth, onResize],
+  );
+
   const observer = useMemo(
     () =>
       new ResizeObserver((entries: ResizeObserverEntry[]) => {
-        for (let entry of entries) {
+        for (const entry of entries) {
           const contentRect = entry.contentRect;
           const width = Math.trunc(contentRect?.width || 0);
           const height = Math.trunc(contentRect?.height || 0);
           updateState(width, height, entry);
         }
       }),
-    [],
+    [updateState],
   );
 
   useEffect(() => {
@@ -82,37 +115,8 @@ const AutoSizer: React.FC<AutoSizerProps> = props => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [observer]);
 
-  const updateState = (newWidth: number, newHeight: number, entry: ResizeObserverEntry) => {
-    const newOuterStyle: OuterStyleType = { overflow: 'visible' };
-    const newChildParams: SizeType = { ...childParams };
-
-    let newBailoutOnChildren = false;
-
-    if (!disableHeight) {
-      newBailoutOnChildren = newHeight === 0;
-      // newOuterStyle.height = 0;
-      newChildParams.height = newHeight;
-    }
-
-    if (!disableWidth) {
-      newBailoutOnChildren = newWidth === 0;
-      // newOuterStyle.width = 0;
-      newChildParams.width = newWidth;
-    }
-    if (
-      (!disableHeight && _childParamsRef.current?.height !== newHeight) ||
-      (!disableWidth && _childParamsRef.current?.width !== newWidth)
-    ) {
-      setBailoutOnChildren(newBailoutOnChildren);
-      setOuterStyle(newOuterStyle);
-      setChildParams({ ...newChildParams });
-      if (typeof onResize === 'function') {
-        onResize({ ...newChildParams }, entry);
-      }
-    }
-  };
   return (
     <div
       className={className}

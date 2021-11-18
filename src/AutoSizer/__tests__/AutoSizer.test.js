@@ -1,5 +1,3 @@
-/* global Element, Event */
-
 import * as React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
@@ -86,7 +84,7 @@ describe('Jest -> AutoSizer', () => {
         },
       ]);
     });
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise((resolve) => setTimeout(resolve, 100));
   }
 
   describe('render React child and get width/height and set disableWidth/disableHeight', () => {
@@ -164,7 +162,7 @@ describe('Jest -> AutoSizer', () => {
       expect(container.textContent).toBe('width: 300, height: undefined');
     });
 
-    it('should update :height after a resize event', async done => {
+    it('should update :height after a resize event', async (done) => {
       act(() => {
         render(<AutoSizerComponent />, container);
       });
@@ -188,7 +186,7 @@ describe('Jest -> AutoSizer', () => {
   });
 
   describe('onResize and (re)render', () => {
-    it('should trigger when size changes', async done => {
+    it('should trigger when size changes', async (done) => {
       const onResize = jest.fn();
       const ChildComponent = jest.fn().mockImplementation(DefaultChildComponent);
 
@@ -218,7 +216,7 @@ describe('Jest -> AutoSizer', () => {
       done();
     });
 
-    it('should only trigger when height changes for disableWidth == true', async done => {
+    it('should only trigger when height changes for disableWidth == true', async (done) => {
       const onResize = jest.fn();
       const ChildComponent = jest.fn().mockImplementation(DefaultChildComponent);
 
@@ -253,7 +251,7 @@ describe('Jest -> AutoSizer', () => {
       done();
     });
 
-    it('should only trigger when width changes for disableHeight == true', async done => {
+    it('should only trigger when width changes for disableHeight == true', async (done) => {
       const onResize = jest.fn();
       const ChildComponent = jest.fn().mockImplementation(DefaultChildComponent);
 

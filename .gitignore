@@ -23,3 +23,9 @@
 
 # coverage
 /coverage
+
+# screenshot
+screenshot
+.eslintcache
+.changelog
+.changelog.md
