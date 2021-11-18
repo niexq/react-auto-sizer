@@ -26,7 +26,6 @@ footer: Open-source MIT Licensed | Copyright © 2019-present<br />Powered by rea
   yarn add @oyyds/react-auto-sizer  # or npm i @oyyds/react-auto-sizer -S
 ```
 
-
 ## 🔨 Use
 
 ```tsx | pure
@@ -40,14 +39,16 @@ const AutoSizeComponent = () => {
           <div
             style={{
               width,
-              height
+              height,
             }}
-          >Content area</div>
+          >
+            Content area
+          </div>
         )}
       </AutoSizer>
     </div>
-  )
-}
+  );
+};
 ```
 
 ## 🔑 Feedback and co-construction

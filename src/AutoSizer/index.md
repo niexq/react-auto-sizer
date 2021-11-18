@@ -154,17 +154,17 @@ export default () => {
 
 The attributes are described as follows:
 
-| Attributes          | instruction                                            | Required | type                           | Defaults  | Version |
-|---------------------|--------------------------------------------------------|------|---------------------------------|--------|----|
-| children            | Function responsible for rendering children            | Y    | (size: SizeType) => React.ReactNode  |        |    |
-| className           | Optional custom CSS class name to attach to root AutoSizer element  | N    | string                           |        |    |
-| style               | Optional inline style                                  | N    | Object                           |   |    |
-| disableHeight       | Disable dynamic :height property                       | N    | boolean                           |   false  |    |
-| disableWidth        | Disable dynamic :width property                        | N    | boolean                           |   false   |    |
-| onResize            | Callback to be invoked on-resize                       | N    | (size: SizeType, entry?: ResizeObserverEntry) => void |   |    |
+| Attributes | instruction | Required | type | Defaults | Version |
+| --- | --- | --- | --- | --- | --- |
+| children | Function responsible for rendering children | Y | (size: SizeType) => React.ReactNode |  |  |
+| className | Optional custom CSS class name to attach to root AutoSizer element | N | string |  |  |
+| style | Optional inline style | N | Object |  |  |
+| disableHeight | Disable dynamic :height property | N | boolean | false |  |
+| disableWidth | Disable dynamic :width property | N | boolean | false |  |
+| onResize | Callback to be invoked on-resize | N | (size: SizeType, entry?: ResizeObserverEntry) => void |  |  |
 
 ## Browsers support
 
 | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/chrome-logo.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/edge-logo.png" alt="IE / Edge" width="24px" height="24px" /><br/> Edge | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/firefox-logo.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/ie-logo.png" alt="Safari" width="24px" height="24px" /><br/>Internet Explorer | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/opera-logo.png" alt="Opera" width="24px" height="24px" /><br/>Opera | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/safari-logo.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/android-logo.png" alt="Safari" width="24px" height="24px" /><br/>WebView Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/chrome-logo.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/firefox-logo.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/opera-logo.png" alt="Opera" width="24px" height="24px" /><br/>Opera Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/safari-logo.png" alt="Safari" width="24px" height="24px" /><br/>Safari iOS | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/samsung-logo.png" alt="Samsung" width="24px" height="24px" /><br/>Samsung Internet |
-| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-|    64     |    79     |    69     |    ❌     |    51     |   13.1    |    64     |    64     |    79     |    47     |   13.4    |    9.0    |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 64 | 79 | 69 | ❌ | 51 | 13.1 | 64 | 64 | 79 | 47 | 13.4 | 9.0 |

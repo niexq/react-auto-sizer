@@ -6,7 +6,7 @@ nav:
 
 ## AutoSizer
 
-自动计算宽高的react组件
+自动计算宽高的 react 组件
 
 ## 何时使用
 
@@ -154,17 +154,17 @@ export default () => {
 
 详细属性说明如下：
 
-| 属性                 | 说明                                                   | 是否必传 | 类型                           | 默认值  | 版本 |
-|---------------------|--------------------------------------------------------|------|---------------------------------|--------|----|
-| children            | 负责渲染子级的函数                                        | 是    | (size: SizeType) => React.ReactNode  |        |    |
-| className           | 附加到 AutoSizer 根元素的可选自定义 CSS 类名称              | 否    | string                           |        |    |
-| style               | 附加到 AutoSizer 根元素的可选内联样式                      | 否    | Object                           |   |    |
-| disableHeight       | 禁用动态: height 属性                                    | 否    | boolean                           |   false  |    |
-| disableWidth        | 禁用动态: width 属性                                     | 否    | boolean                           |   false   |    |
-| onResize            | 在调整大小时调用的回调                                     | 否    | (size: SizeType, entry?: ResizeObserverEntry) => void |   |    |
+| 属性 | 说明 | 是否必传 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- | --- |
+| children | 负责渲染子级的函数 | 是 | (size: SizeType) => React.ReactNode |  |  |
+| className | 附加到 AutoSizer 根元素的可选自定义 CSS 类名称 | 否 | string |  |  |
+| style | 附加到 AutoSizer 根元素的可选内联样式 | 否 | Object |  |  |
+| disableHeight | 禁用动态: height 属性 | 否 | boolean | false |  |
+| disableWidth | 禁用动态: width 属性 | 否 | boolean | false |  |
+| onResize | 在调整大小时调用的回调 | 否 | (size: SizeType, entry?: ResizeObserverEntry) => void |  |  |
 
 ## 浏览器兼容性
 
 | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/chrome-logo.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/edge-logo.png" alt="IE / Edge" width="24px" height="24px" /><br/> Edge | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/firefox-logo.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/ie-logo.png" alt="Safari" width="24px" height="24px" /><br/>Internet Explorer | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/opera-logo.png" alt="Opera" width="24px" height="24px" /><br/>Opera | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/safari-logo.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/android-logo.png" alt="Safari" width="24px" height="24px" /><br/>WebView Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/chrome-logo.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/firefox-logo.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/opera-logo.png" alt="Opera" width="24px" height="24px" /><br/>Opera Android | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/safari-logo.png" alt="Safari" width="24px" height="24px" /><br/>Safari iOS | <img src="https://raw.githubusercontent.com/niexq/picbed/main/picgo/samsung-logo.png" alt="Samsung" width="24px" height="24px" /><br/>Samsung Internet |
-| :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------: |
-|    64     |    79     |    69     |    ❌     |    51     |   13.1    |    64     |    64     |    79     |    47     |   13.4    |    9.0    |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 64 | 79 | 69 | ❌ | 51 | 13.1 | 64 | 64 | 79 | 47 | 13.4 | 9.0 |

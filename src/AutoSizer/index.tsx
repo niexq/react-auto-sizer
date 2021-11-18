@@ -84,11 +84,7 @@ const AutoSizer: React.FC<AutoSizerProps> = props => {
     };
   }, []);
 
-  const updateState = (
-    newWidth: number,
-    newHeight: number,
-    entry: ResizeObserverEntry,
-  ) => {
+  const updateState = (newWidth: number, newHeight: number, entry: ResizeObserverEntry) => {
     const newOuterStyle: OuterStyleType = { overflow: 'visible' };
     const newChildParams: SizeType = { ...childParams };
 
