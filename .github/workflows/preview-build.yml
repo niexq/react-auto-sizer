@@ -1,4 +1,4 @@
-name: Build CI
+name: Preview-Build CI
 
 on:
   push:
@@ -45,18 +45,16 @@ jobs:
         key: ${{ runner.os }}-${{ matrix.node-version }}-nodemodules-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-${{ matrix.node-version }}-nodemodules-
-
     - run: yarn --ignore-engines
       if: |
         steps.cache-yarn-cache.outputs.cache-hit != 'true' ||
         steps.cache-node-modules.outputs.cache-hit != 'true'
-      
     - run: npm install -g yarn
     - run: yarn config set registry https://registry.yarnpkg.com
     - name: install
       run: yarn
-    - name: prettier
-      run: yarn run prettier
+    - name: lint
+      run: yarn run lint
     - name: test
       run: yarn run test
     - name: test:coverage
