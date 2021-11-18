@@ -10,7 +10,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Install and Build docs-dist 🔧 
+      - name: Install and Build 🔧
         run: |
           npm install
           npm run deploy
@@ -20,5 +20,3 @@ jobs:
         with:
           branch: gh-pages
           folder: docs-dist
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACTIONS_ACCESS_TOKEN }}
