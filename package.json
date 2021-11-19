@@ -24,8 +24,9 @@
     "pub": "npm publish --access=public",
     "release": "npm run build && npm run pub",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --fix --format=pretty ./src && npm run lint:prettier",
+    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx --fix --format=pretty ./src && npm run lint:style && npm run lint:prettier",
     "lint:prettier": "npm run prettier && git diff && prettier --version && prettier --check \"src/**/**.{js,jsx,tsx,ts,less,md,json}\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
@@ -67,6 +68,7 @@
     "lint-staged": "^10.0.7",
     "prettier": "^2.4.1",
     "resize-observer-polyfill": "^1.5.1",
+    "stylelint": "^14.1.0",
     "typescript": "^4.5.2",
     "yorkie": "^2.0.0"
   }
