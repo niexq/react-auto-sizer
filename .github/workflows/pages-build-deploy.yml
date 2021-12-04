@@ -1,4 +1,4 @@
-name: Pages Build and Deploy
+name: Pages Build and Deploy CI
 on: 
   push:
     branches:

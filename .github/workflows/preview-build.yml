@@ -1,4 +1,4 @@
-name: Preview-Build CI
+name: Preview Build CI
 
 on:
   push:
