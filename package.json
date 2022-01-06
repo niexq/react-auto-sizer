@@ -1,6 +1,6 @@
 {
   "name": "@oyyds/react-auto-sizer",
-  "version": "1.2.8",
+  "version": "1.2.10",
   "description": "自动计算宽高的react组件 React components that automatically calculate width and height",
   "keywords": [
     "react-auto-sizer",
@@ -51,10 +51,6 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
-  },
-  "dependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^7.0.1",
