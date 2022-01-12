@@ -30,7 +30,7 @@ English | [ 简体中文 ](./README.zh_CN.md)
 
 ### 🏠 [Homepage](https://niexq.github.io/react-auto-sizer)
 
-![](https://raw.githubusercontent.com/niexq/picbed/main/picgo/react-auto-sizer-en-US.gif)
+![](https://raw.githubusercontent.com/niexq/picbed/main/picgo/homepageen.gif)
 
 ### 📦 Install
 
