@@ -26,8 +26,7 @@
 
 > React components that automatically calculate width and height
 
-English | [ 简体中文 ](./README.zh_CN.md)
-
+ [ 简体中文 ](./README.zh_CN.md) | English
 ### 🏠 [Homepage](https://niexq.github.io/react-auto-sizer)
 
 ![](https://raw.githubusercontent.com/niexq/picbed/main/picgo/homepageen.gif)
